@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Generate Your video</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <main class="generate-page">
+        <section class="status-panel">
+            <div class="state state--ready">
+                <p>Your video is ready to put together.</p>
+                <button class="btn btn--primary" id="generate-btn">Generate Video</button>
+            </div>
+
+            <div class="state state--working" hidden>
+                <p>Putting your video together &mdash; this can take a minute&hellip;</p>
+                <div class="spinner" aria-hidden="true"></div>
+            </div>
+
+            <div class="state state--done" hidden>
+                <video class="previw-player" controls></video>
+                <div class="actions">
+                    <a class="btn btn--primary" id="download-link">Download video</a>
+                </div>
+            </div>
+
+            <div class="state state--error" hidden>
+                <p class="error-message"></p>
+                <button class="btn btn--secondary" id="retry-btn">Try again</button>
+            </div>
+
+
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

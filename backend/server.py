@@ -4,20 +4,43 @@ from pathlib import Path
 
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, BackgroundTasks
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from backend.est import get_duration
 from backend.helper import load_session, save_session, is_video
 from backend.fitting import compute_timeline
 from backend.segments import build_image_segment, build_video_segment, concat_segments, mux_audio
 
 app = FastAPI()
-
+FRONTEND = Path(__file__).resolve().parent.parent / "frontend"
+app.mount("/static",StaticFiles(directory=FRONTEND),name="static")
 TMP_ROOT = Path(__file__).resolve().parent.parent / "tmp"
 TMP_ROOT.mkdir(exist_ok=True)
 
 
 @app.get("/")
-def home():
-    return "Server is alive"
+def index():
+    return FileResponse(FRONTEND / "index.html")
+
+
+@app.get("/upload.html")
+def upload():
+    return FileResponse(FRONTEND / "upload.html")
+
+
+@app.get("/generate.html")
+def generate():
+    return FileResponse(FRONTEND / "generate.html")
+
+
+@app.get("/style.css")
+def style():
+    return FileResponse(FRONTEND / "style.css")
+
+
+@app.get("/script.js")
+def script():
+    return FileResponse(FRONTEND / "script.js")
 
 
 @app.post("/session")
@@ -164,11 +187,9 @@ def download(session_id:str,background_tasks:BackgroundTasks):
         raise HTTPException(404,"video not generated yet")
 
 
-    background_tasks.add_task(shutil.rmtree,session_dir,ignore_errors=True)
-
     return FileResponse(output,filename="video.mp4",media_type="video/mp4")
 
-@app.delete("/session/{session_dir}")
+@app.delete("/session/{session_id}")
 def delete_session(session_id:str):
     session_dir = TMP_ROOT/session_id
     if not session_dir.exists():

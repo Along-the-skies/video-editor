@@ -1,29 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Maker Website</title>
     <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Video Maker Website</h1>
-    <div class="uploads">
-        <label for="audioInput" class="fileLabel">Choose narration audio</label>
-            <input type="file" id="audioInput" accept="audio/*">
-        <label for="firstImage" class="fileLabel">Choose first image</label>
-            <input type="file" id="firstImage" accept="image/*">
 
-        <label for="lastImage" class="fileLabel">Choose last image</label>
-            <input type="file" id="lastImage" accept="image/*">
+    <header class="topBar">
+        <span class="siteName">Video Maker</span>
+        <nav class="navLinks">
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
 
-        <label for="middleFiles" class="fileLabel">Choose photos/videos</label>
-            <input type="file" id="middleFiles" accept="video/*,image/*" multiple>
-    </div>
-    <button id="generateButton">Generate Video</button>
-    <p id="status"></p>
-    <div id="download">
-        <a id="downloadButton" href="#" style="display: none;">Download</a>
-    </div>
+    <main class="upload-page">
+        <h1>Add your photos and audio</h1>
+
+        <div class="uploads">
+            <div class="fileGroup">
+                <span>Narration</span>
+                <label for="audioInput" class="fileLabel">Choose narration audio</label>
+                <input type="file" id="audioInput" accept="audio/*">
+            </div>
+
+            <div class="fileGroup">
+                <span>First image</span>
+                <label for="firstImage" class="fileLabel">Choose first image</label>
+                <input type="file" id="firstImage" accept="image/*">
+            </div>
+
+            <div class="fileGroup">
+                <span>Last image</span>
+                <label for="lastImage" class="fileLabel">Choose last image</label>
+                <input type="file" id="lastImage" accept="image/*">
+            </div>
+
+            <div class="fileGroup">
+                <span>Photos &amp; videos</span>
+                <label for="middleFiles" class="fileLabel">Choose photos/videos</label>
+                <input type="file" id="middleFiles" accept="video/*,image/*" multiple>
+            </div>
+        </div>
+
+        <button id="generateButton" class="btn btn--primary">Generate Video</button>
+        <p id="status"></p>
+        <div id="download">
+            <a id="downloadButton" href="generate.html" class="btn btn--primary" style="display: none;">Download</a>
+        </div>
+    </main>
+
+    <footer class="bottomBar">
+        <span>&copy; 2026 Video Maker</span>
+    </footer>
 
     <script src="script.js"></script>
 </body>
