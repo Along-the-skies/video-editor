@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Generate Your Video</title>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Generate Your video</title>
-    <link rel="stylesheet" href="style.css">
-
 </head>
+
 <body>
+
+    <header class="topBar">
+        <span class="siteName">Video Maker</span>
+        <nav class="navLinks">
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
     <main class="generate-page">
         <section class="status-panel">
+
             <div class="state state--ready">
                 <p>Your video is ready to put together.</p>
                 <button class="btn btn--primary" id="generate-btn">Generate Video</button>
@@ -21,9 +30,15 @@
             </div>
 
             <div class="state state--done" hidden>
-                <video class="previw-player" controls></video>
+                <video
+                    class="previw-player"
+                    controls
+                    preload="metadata"
+                    playsinline
+                ></video>
                 <div class="actions">
                     <a class="btn btn--primary" id="download-link">Download video</a>
+                    <a class="btn btn--secondary" href="upload.html">Make another</a>
                 </div>
             </div>
 
@@ -31,10 +46,13 @@
                 <p class="error-message"></p>
                 <button class="btn btn--secondary" id="retry-btn">Try again</button>
             </div>
-
-
         </section>
     </main>
+
+    <footer class="bottomBar">
+        <span>&copy; 2026 Vasudev</span>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
