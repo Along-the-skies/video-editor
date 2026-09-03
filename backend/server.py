@@ -22,15 +22,25 @@ TMP_ROOT.mkdir(exist_ok=True)
 def index():
     return FileResponse(FRONTEND / "index.html")
 
-
-@app.get("/upload.html")
+@app.get("/upload")
 def upload():
     return FileResponse(FRONTEND / "upload.html")
 
+@app.get("/donate")
+def upload():
+    return FileResponse(FRONTEND / "donate.html")
 
-@app.get("/generate.html")
+@app.get("/assets/qr-image.jpeg")
+def qr():
+    return FileResponse(FRONTEND /"assets"/"qr-image.jpeg")
+
+@app.get("/generate")
 def generate():
     return FileResponse(FRONTEND / "generate.html")
+
+@app.get("/Readme")
+def generate():
+    return FileResponse(FRONTEND / "Readme.html")
 
 
 @app.get("/style.css")

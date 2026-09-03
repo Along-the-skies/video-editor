@@ -11,7 +11,9 @@
     <header class="topBar">
         <span class="siteName">Video Maker</span>
         <nav class="navLinks">
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
+            <a href="donate">Donate</a>
+            <a href="Readme">Learn more</a>
         </nav>
     </header>
 
@@ -23,36 +25,38 @@
                 <span>Narration</span>
                 <label for="audioInput" class="fileLabel">Choose narration audio</label>
                 <input type="file" id="audioInput" accept="audio/*">
+                <span class="selectedFile" id="audioName"></span>
             </div>
 
             <div class="fileGroup">
                 <span>First image</span>
                 <label for="firstImage" class="fileLabel">Choose first image</label>
                 <input type="file" id="firstImage" accept="image/*">
+                <span class="selectedFile" id="firstImageName"></span>
             </div>
 
             <div class="fileGroup">
                 <span>Last image</span>
                 <label for="lastImage" class="fileLabel">Choose last image</label>
                 <input type="file" id="lastImage" accept="image/*">
+                <span class="selectedFile" id="lastImageName"></span>
             </div>
 
             <div class="fileGroup">
                 <span>Photos &amp; videos</span>
                 <label for="middleFiles" class="fileLabel">Choose photos/videos</label>
                 <input type="file" id="middleFiles" accept="video/*,image/*" multiple>
+                <span class="selectedFile" id="middleFilesName"></span>
             </div>
-        </div>
-
-        <button id="generateButton" class="btn btn--primary">Generate Video</button>
-        <p id="status"></p>
-        <div id="download">
-            <a id="downloadButton" href="generate.html" class="btn btn--primary" style="display: none;">Download</a>
+            <button id="generateButton" class="btn btn--primary">Generate Video</button>
+            <p id="status"></p>
+            <div id="download">
+                <a id="downloadButton" href="generate" class="btn btn--primary" style="display: none;">Download</a>
         </div>
     </main>
 
     <footer class="bottomBar">
-        <span>&copy; 2026 Video Maker</span>
+        <span>&copy; 2026 Vasudev</span>
     </footer>
 
     <script src="script.js"></script>
