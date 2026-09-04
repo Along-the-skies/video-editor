@@ -417,3 +417,12 @@ button:focus-visible,
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.love-card {
+    background-color: #f7f4ef;
+    border: 4px solid #2d2a26;
+    box-shadow: 8px 8px 0 #2d2a26;
+    padding: 2.5rem;
+    max-width: 720px;
+    text-align: center;
+}
