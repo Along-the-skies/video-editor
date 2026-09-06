@@ -1,6 +1,7 @@
 const API = "";
 let sessionId = null;
 let isNavigatingAway = false;
+console.log("NEW SCRIPT LOADED");
 
 async function createSession() {
   const response = await fetch(`${API}/session`, { method: "POST" });
@@ -54,7 +55,7 @@ if (generateButton) {
       await uploadFile("/upload/last", last);
       status.textContent = "Uploads complete!";
       isNavigatingAway = true;
-      window.location.href = `generate.html?session_id=${encodeURIComponent(sessionId)}`;
+      window.location.href = `generate?session_id=${encodeURIComponent(sessionId)}`;
     } catch (error) {
       console.error(error);
       status.textContent = `Error: ${error.message}`;
@@ -98,10 +99,23 @@ if (generateBtn) {
       }
       workingState.hidden = true;
       doneState.hidden = false;
+      const previewUrl = `${API}/preview/${encodeURIComponent(currentSessionId)}`;
       const downloadUrl = `${API}/download/${encodeURIComponent(currentSessionId)}`;
-      videoPlayer.src = downloadUrl;
+      videoPlayer.src = previewUrl;
       downloadLink.href = downloadUrl;
-      downloadLink.download = "video.mp4";
+      const now = new Date();
+
+      const timestamp = now.toLocaleString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).replace(/[,: ]/g, "-");
+
+      downloadLink.download = `output_${timestamp}.mp4`;
     } catch (error) {
       console.error(error);
       showError(error.message);

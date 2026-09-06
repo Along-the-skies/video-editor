@@ -2,6 +2,8 @@
 
 * {
     box-sizing: border-box;
+    user-select: none;
+    
 }
 
 body {
@@ -13,9 +15,13 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    height: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+    
 }
 
-/* ---------- Header ---------- */
+
 
 .topBar {
     width: 100%;
@@ -63,7 +69,6 @@ body {
     color: #2f5eff;
 }
 
-/* ---------- Footer ---------- */
 
 .bottomBar {
     width: 100%;
@@ -79,7 +84,6 @@ body {
     color: #141414;
 }
 
-/* ---------- Shared page shell ---------- */
 
 main {
     width: 100%;
@@ -109,7 +113,6 @@ h1 {
     line-height: 1.6;
 }
 
-/* ---------- Landing / welcome ---------- */
 
 .welcome {
     display: flex;
@@ -152,7 +155,6 @@ h1 {
     box-shadow: 3px 3px 0 #141414;
 }
 
-/* ---------- Buttons (shared) ---------- */
 
 .btn {
     display: inline-block;
@@ -185,7 +187,6 @@ h1 {
     color: #141414;
 }
 
-/* ---------- Upload page ---------- */
 
 .upload-page {
     align-items: stretch;
@@ -201,6 +202,7 @@ h1 {
     box-shadow: 6px 6px 0 #141414;
     width: 100%;
     margin-top: 24px;
+    max-height: 80vh;
 }
 
 .fileGroup {
@@ -425,4 +427,11 @@ button:focus-visible,
     padding: 2.5rem;
     max-width: 720px;
     text-align: center;
+}
+
+.phone-tag {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 16px;
 }
