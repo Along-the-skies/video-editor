@@ -1,3 +1,5 @@
+import os
+import sys
 import shutil
 import uuid
 from pathlib import Path
@@ -9,15 +11,32 @@ from fastapi.staticfiles import StaticFiles
 from backend.est import get_duration
 from backend.helper import load_session, save_session, is_video
 from backend.fitting import compute_timeline
-from backend.segments import build_image_segment, build_video_segment, concat_segments, mux_audio, build_preview
+from backend.segments import (
+    build_image_segment,
+    build_video_segment,
+    concat_segments,
+    mux_audio,
+    build_preview,
+)
 
 app = FastAPI()
 
 FRONTEND = Path(__file__).resolve().parent.parent / "frontend"
-TMP_ROOT = Path(__file__).resolve().parent.parent / "tmp"
 
-TMP_ROOT.mkdir(exist_ok=True)
 
+if getattr(sys, "frozen", False):
+    exe_dir = Path(sys.executable).resolve().parent
+
+    if exe_dir.name == "VideoMaker" and exe_dir.parent.name == "dist":
+        TMP_ROOT = exe_dir / "tmp"
+    else:
+        TMP_ROOT = (
+            Path(os.getenv("LOCALAPPDATA", Path.home())) / "Vframe" / "tmp")
+else:
+    TMP_ROOT = Path(__file__).resolve().parent.parent / "tmp"
+
+
+TMP_ROOT.mkdir(parents=True, exist_ok=True)
 CURRENT_SESSION_FILE = TMP_ROOT / "current_session.txt"
 
 
