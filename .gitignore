@@ -17,3 +17,5 @@ Thumbs.db
 .spec
 /build
 /dist
+
+/bin

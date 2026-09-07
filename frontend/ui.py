@@ -11,7 +11,7 @@ class VideoMakerWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Video Maker")
+        self.setWindowTitle("VFRAME")
         self.resize(1200, 800)
 
         self.setStyleSheet("""
