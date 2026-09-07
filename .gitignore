@@ -18,4 +18,5 @@ Thumbs.db
 /build
 /dist
 
-/bin
+backend/bin/
+Installer/
